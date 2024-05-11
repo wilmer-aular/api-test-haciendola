@@ -35,6 +35,7 @@ const apiTokenValidation = async (
     }
     if (authHeader) {
       const [type, token] = authHeader.split(' ');
+      
       if (type !== 'Bearer') {
         throw new HttpException('Header type invalid', 401);
       }
@@ -42,6 +43,8 @@ const apiTokenValidation = async (
         throw new HttpException('Invalid token', 401);
       }
       await getDataByToken(token);
+    } else {
+      throw new HttpException('Header type invalid', 401);
     }
     next();
   } catch (error: any) {

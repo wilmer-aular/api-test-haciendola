@@ -11,7 +11,7 @@ export interface IProduct extends IModelBase {
   grams: number;
   stock: number;
   price: number;
-  compare_price: number;
+  comparePrice: number;
   barcode: number;
 }
 
@@ -43,8 +43,12 @@ const model = {
   price: {
     type: DataTypes.BIGINT,
     allowNull: false,
-  }, 
-  compare_price: {
+  },
+  comparePrice: {
+    type: DataTypes.BIGINT,
+    allowNull: false,
+  },
+  barcode: {
     type: DataTypes.BIGINT,
     allowNull: false,
   },
