@@ -7,9 +7,8 @@ export abstract class CrudService<T extends Model> {
 
   public all = async (): Promise<T[]> => {
     try {
-      return await this.model.findAll({raw: true });
+      return await this.model.findAll({raw: true, order: [['updated_at', 'DESC']] });
     } catch (error: any) {
-      console.log(error);
       console.error(`${this.serviceName} - all`, error.message);
       throw new DatabaseException(error.message, this.serviceName);
     }
