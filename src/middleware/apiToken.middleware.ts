@@ -42,7 +42,6 @@ const apiTokenValidation = async (
       if (!token) {
         throw new HttpException('Invalid token', 401);
       }
-      await getDataByToken(token);
     } else {
       throw new HttpException('Header type invalid', 401);
     }
